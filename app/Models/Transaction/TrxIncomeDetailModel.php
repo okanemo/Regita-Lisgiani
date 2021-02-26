@@ -36,10 +36,10 @@ class TrxIncomeDetailModel extends Model
     ];
     public function master()
     {
-        return $this->belongsTo('App\Models\Transaction\TrxIncomeModel', 'trx_income_id', 'trx_income_id');
+        return $this->belongsTo('App\Models\Transaction\TrxIncomeModel', 'trx_income_id', 'id');
     }
     public function subcategory()
     {
-        return $this->belongsTo('App\Models\Categories\SubCategoryModel', 'sub_category_id', 'id');
+        return $this->belongsTo('App\Models\Categories\SubCategoryModel', 'sub_category_id', 'id')->with('category');
     }
 }

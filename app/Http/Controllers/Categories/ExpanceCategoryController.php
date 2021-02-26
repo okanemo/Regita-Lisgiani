@@ -11,7 +11,8 @@ use Session;
 
 class ExpanceCategoryController extends Controller
 {
-    use GeneralServices;public function index(){
+    use GeneralServices;
+    public function index(){
         $data['data'] = CategoryModel::where('type','=','expance')->where('user_id',Session::get('Users.id'))->get();
         $data['title'] = 'Expance Category';
         return view('admin.category.expance.view',$data);

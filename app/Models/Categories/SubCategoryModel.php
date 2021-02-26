@@ -34,6 +34,10 @@ class SubCategoryModel extends Model
     protected $dates = [
         'entry_date'
     ];
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Categories\CategoryModel', 'category_id', 'id');
+    }
     public function income_transaction_details()
     {
         return $this->hasMany('App\Models\Transaction\TrxIncomeDetailModel', 'sub_category_id', 'id')->where('subcategory.type', '=', 'income');
