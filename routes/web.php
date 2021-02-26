@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\AuthController@index');
 Route::post('/admin/login', [ 'as' => 'login', 'uses' => 'App\Http\Controllers\AuthController@login']);
 Route::get('/admin/logout', 'App\Http\Controllers\AuthController@logout');
+
+//===========General
+Route::get('/admin/income/dropdownlist/get-subcategory/{id}','App\Http\Controllers\GeneralController@getSubCategorybyCategoryId');
+Route::get('/admin/income/edit/dropdownlist/get-subcategory/{id}','App\Http\Controllers\GeneralController@getSubCategorybyCategoryId');
+Route::get('/admin/expance/dropdownlist/get-subcategory/{id}','App\Http\Controllers\GeneralController@getSubCategorybyCategoryId');
+Route::get('/admin/expance/edit/dropdownlist/get-subcategory/{id}','App\Http\Controllers\GeneralController@getSubCategorybyCategoryId');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['CheckSession']], function(){
     
     Route::get('/profile', 'App\Http\Controllers\Users\UserController@profileDetail');
@@ -68,7 +75,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['CheckSession']], function()
         Route::get('/income/add', 'App\Http\Controllers\Transaction\IncomeTrasactionController@add');
         Route::post('/income/create', 'App\Http\Controllers\Transaction\IncomeTrasactionController@store');
         Route::post('/income/update/{id}', 'App\Http\Controllers\Transaction\IncomeTrasactionController@update');
-        Route::get('/income/delete/{id}', 'App\Http\Controllers\Transaction\IncomeTrasactionController@destroy');
+        Route::get('/income/delete/{id}/{trx_id}', 'App\Http\Controllers\Transaction\IncomeTrasactionController@destroy');
+
+        //===========expance
+        Route::get('/expance', 'App\Http\Controllers\Transaction\ExpanceTrasactionController@index');
+        Route::get('/expance/edit/{id}', 'App\Http\Controllers\Transaction\ExpanceTrasactionController@show');
+        Route::get('/expance/add', 'App\Http\Controllers\Transaction\ExpanceTrasactionController@add');
+        Route::post('/expance/create', 'App\Http\Controllers\Transaction\ExpanceTrasactionController@store');
+        Route::post('/expance/update/{id}', 'App\Http\Controllers\Transaction\ExpanceTrasactionController@update');
+        Route::get('/expance/delete/{id}/{trx_id}', 'App\Http\Controllers\Transaction\ExpanceTrasactionController@destroy');
     });
 
 });
