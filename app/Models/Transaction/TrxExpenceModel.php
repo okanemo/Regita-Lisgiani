@@ -10,7 +10,7 @@ class TrxExpenceModel extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table   = 'trx_income';
+    protected $table   = 'trx_expances';
 	public $primarykey = 'id';
     public $timestamps = true;
 
@@ -28,7 +28,7 @@ class TrxExpenceModel extends Model
     ];
     public function details()
     {
-        return $this->hasMany('App\Models\Transaction\TrxExpenceDetailModel', 'trx_expance_id', 'trx_expance_id');
+        return $this->hasMany('App\Models\Transaction\TrxExpenceDetailModel', 'trx_expance_id', 'id');
     }
     public function category()
     {

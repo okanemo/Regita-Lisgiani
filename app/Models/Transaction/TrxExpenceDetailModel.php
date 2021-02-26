@@ -19,7 +19,7 @@ class TrxExpenceDetailModel extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'sub_category_id','remarks','spent_at','total','trx_income_id'
+        'sub_category_id','remarks','spent_at','total','trx_expance_id'
     ];
 
     /**
@@ -35,7 +35,7 @@ class TrxExpenceDetailModel extends Model
     ];
     public function master()
     {
-        return $this->belongsTo('App\Models\Transaction\TrxExpenceModel', 'trx_expance_id', 'trx_expance_id');
+        return $this->belongsTo('App\Models\Transaction\TrxExpenceModel', 'trx_expance_id', 'id');
     }
     public function subcategory()
     {

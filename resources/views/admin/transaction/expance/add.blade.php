@@ -32,16 +32,39 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <!-- form start -->
-              <form role="form" method="post" action="{{ url('admin/expance-category/create') }}">
+              <form role="form" method="post" action="{{ url('admin/expance/create') }}">
                 {{ csrf_field() }}
                 <input type="text" name="type" value="expance" style="display:none">
                 <input type="text" name="user_id" value="{{Session::get('Users.id')}}" style="display:none">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputText">Category Name</label>
-                    <input type="text" required name="name"  class="form-control" id="exampleInputText" placeholder="Enter category name ..">
+                <div class="form-group">
+                    <label for="exampleInputText">Category</label>
+                    <select class="custom-select" name="category_id" required>
+                      <option value="">== Please Select Category ==</option>
+                      @foreach($category as $key)
+                      <option value="{{$key['id']}}">{{$key['name']}}</option>
+                      @endforeach
+                    </select>
                   </div>
-                </div>
+                  
+                  <div class="form-group">
+                      <label for="state">Sub Category:</label>
+                      <select name="sub_category_id" class="form-control">
+                      <option value="">== Please Select Sub Category ==</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputText">Date</label>
+                    <input type="date" required name="spent_at" class="form-control" id="exampleInputText">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputText">Amount</label>
+                    <input type="number" required name="total" min="0" class="form-control" id="exampleInputText" placeholder="10000">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputText">Remarks</label>
+                    <input type="text" class="form-control" name="remarks">
+                  </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -60,4 +83,33 @@
     <!-- /.content -->
   </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
+<script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="category_id"]').on('change',function(){
+               var categoryId = jQuery(this).val();
+               if(categoryId)
+               {
+                  jQuery.ajax({
+                     url : 'dropdownlist/get-subcategory/' +categoryId,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="sub_category_id"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="sub_category_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {sub_category_id
+                  $('select[name="state"]').empty();
+               }
+            });
+    });
+    </script>
 
