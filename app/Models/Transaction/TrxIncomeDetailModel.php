@@ -8,38 +8,38 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TrxIncomeDetailModel extends Model
 {
-    use HasFactory;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    use SoftDeletes;
-    protected $table   = 'trx_income_details';
+	use HasFactory;
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	use SoftDeletes;
+	protected $table   = 'trx_income_details';
 	public $primarykey = 'id';
-    public $timestamps = true;
+	public $timestamps = true;
 
-    protected $fillable = [
-        'sub_category_id','remarks','entry_date','total','trx_income_id'
-    ];
+	protected $fillable = [
+		'sub_category_id','remarks','entry_date','total','trx_income_id'
+	];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'deleted_at','updated_at','created_at'
-    ];
-    protected $dates = [
-        'entry_date'
-    ];
-    public function master()
-    {
-        return $this->belongsTo('App\Models\Transaction\TrxIncomeModel', 'trx_income_id', 'id');
-    }
-    public function subcategory()
-    {
-        return $this->belongsTo('App\Models\Categories\SubCategoryModel', 'sub_category_id', 'id')->with('category');
-    }
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = [
+		'deleted_at','updated_at','created_at'
+	];
+	protected $dates = [
+		'entry_date'
+	];
+	public function master()
+	{
+		return $this->belongsTo('App\Models\Transaction\TrxIncomeModel', 'trx_income_id', 'id');
+	}
+	public function subcategory()
+	{
+		return $this->belongsTo('App\Models\Categories\SubCategoryModel', 'sub_category_id', 'id')->with('category');
+	}
 }
