@@ -33,10 +33,10 @@ class TrxIncomeModel extends Model
 	];
 	public function details()
 	{
-		return $this->hasMany('App\Models\Transaction\TrxIncomeDetailModel', 'trx_income_id', 'trx_income_id');
+		return $this->hasMany('App\Models\Transaction\TrxIncomeDetailModel', 'trx_income_id', 'id');
 	}
 	public function category()
 	{
-		return $this->belongsTo('App\Models\Categories\category_id', 'category_id', 'id');
+		return $this->belongsTo('App\Models\Categories\CategoryModel', 'category_id', 'id');
 	}
 }
