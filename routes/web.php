@@ -26,6 +26,8 @@ Route::get('/admin/income/edit/dropdownlist/get-subcategory/{id}','App\Http\Cont
 Route::get('/admin/expance/dropdownlist/get-subcategory/{id}','App\Http\Controllers\GeneralController@getSubCategorybyCategoryId');
 Route::get('/admin/expance/edit/dropdownlist/get-subcategory/{id}','App\Http\Controllers\GeneralController@getSubCategorybyCategoryId');
 
+Route::post('/admin/report/filter', 'App\Http\Controllers\Transaction\TrasactionReportController@index');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['CheckSession']], function(){
 	
 	Route::get('/profile', 'App\Http\Controllers\Users\UserController@profileDetail');

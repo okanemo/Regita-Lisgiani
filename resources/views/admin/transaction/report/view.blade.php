@@ -21,7 +21,50 @@
 	  <div class="container-fluid">
 		<div class="row">
 			
-			  
+		<div class="card card-secondary col-md-12">
+			  <div class="card-header">
+				<h3 class="card-title">Filter Data</h3>
+			  </div>
+			  <div class="card-body">
+				<form method="post" action="{{ url('admin/report/filter') }}">
+				<div class="row">
+				{{ csrf_field() }}
+				  	<div class="col-3">
+						<label>Years</label>
+						<select class="form-control custom-select" name="filter_years">
+						<option value="">==Please Select==</option>
+						@foreach($years as $key)
+						<option value="{{$key}}">{{$key}}</option>
+						@endforeach
+						</select>
+					</div>
+					<div class="col-3">
+						<label>Month</label>
+						<select class="form-control custom-select" name="filter_month">
+						<option value="">==Please Select==</option>
+						@for($i=1; $i <= count($month); $i++) 
+						<option value="{{$i}}">{{$month[$i-1]}}</option>
+						@endfor
+						</select>
+					</div>
+					<div class="col-3">
+						<label>Days</label>
+						<select class="form-control custom-select" name="filter_days" >
+						<option value="">==Please Select==</option>
+						@foreach($days as $key)
+						<option value="{{$key}}">{{$key}}</option>
+						@endforeach
+						</select>
+					</div>
+					<div class="col-1">
+						<label>&nbsp;</label>
+						<button type="submit" class="form-control btn btn-primary">Filter</button>
+					</div>
+				</div>
+				</form>
+			  </div>
+			  <!-- /.card-body -->
+			</div>
 			@if($errors->any())
 				<div class="alert alert-danger">
 				{{$errors->first()}}
@@ -43,16 +86,18 @@
 					<tbody>
 					<tr>
 						<td><b>Income</b></td>
-						<td>{{$income->sum('total')}}</td>
+						<!-- <td>{{$income->sum('total')}}</td> -->
+						<td><?php echo array_sum(array_column($income->toArray(),'value')); ?></td>
 					</tr>
 					<tr>
 						<td><b>Expance</b></td>
 
-						<td>{{$expance->sum('total')}}</td>
+						<td><?php echo array_sum(array_column($expance->toArray(),'value')); ?></td>
 					</tr>
 					<tr>
 						<td><b>Profit</b></td>
-						<td>{{$income->sum('total')-$expance->sum('total')}}</td>
+						<?php $profit = array_sum(array_column($income->toArray(),'value'))-array_sum(array_column($expance->toArray(),'value')); ?>
+						<td>{{$profit}}</td>
 					</tr>
 					</tbody>
 				</table>
@@ -76,10 +121,10 @@
 					</thead>
 					<tbody>
 
-					@foreach($income->get() as $key)
+					@foreach($income as $key)
 					<tr>
 						<td>{{$key['category']['name']}}</td>
-						<td>{{$key['total']}}</td>
+						<td><?php echo array_sum(array_column($key['details']->toArray(),'total')); ?></td>
 					</tr>
 					@endforeach
 					</tbody>
@@ -107,10 +152,10 @@
 					</thead>
 					<tbody>
 
-					@foreach($expance->get() as $key)
+					@foreach($expance as $key)
 					<tr>
 						<td>{{$key['category']['name']}}</td>
-						<td>{{$key['total']}}</td>
+						<td><?php echo array_sum(array_column($key['details']->toArray(),'total')); ?></td>
 					</tr>
 					@endforeach
 					</tbody>
