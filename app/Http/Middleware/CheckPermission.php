@@ -33,7 +33,7 @@ class CheckPermission
 			$validatePermission = $this->validatePermission($uri, $menu);
 			if (empty($validatePermission)) {
 				echo "<script type='text/javascript'>alert('You dont have permission to acces this page');
-						window.location.href='/admin';
+						window.location.href='/admin/profile';
 				</script>";
 			}
 
