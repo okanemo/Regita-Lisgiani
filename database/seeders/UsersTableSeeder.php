@@ -18,14 +18,14 @@ class UsersTableSeeder extends Seeder
                 'role_id' => 1,
                 'fullname' => 'admin',
                 'email' => 'admin@mail.com',
-                'password' => Hash::make('admin2021'),
+                'password' => Hash::make('admin123'),
                 'status' => 'active'
                ),
             array(
                 'role_id' => 2,
-                'fullname' => 'user',
-                'email' => 'user@mail.com',
-                'password' => Hash::make('user2021'),
+                'fullname' => 'superadmin',
+                'email' => 'superadmin@mail.com',
+                'password' => Hash::make('superadmin123'),
                 'status' => 'active'
                ),
             );

@@ -14,10 +14,10 @@ class UserRolesTableSeeder extends Seeder
     {
         $data = array(
             array(
-                'role_name' => 'Admin'
+                'role_name' => 'Superadmin'
                ),
             array(
-                'role_name' => 'Member'
+                'role_name' => 'Admin'
                )
             );
         \App\Models\Admin\UserRolesModel::insert($data);

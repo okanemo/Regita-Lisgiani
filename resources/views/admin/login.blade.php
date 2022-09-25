@@ -21,8 +21,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
+
   <div class="card">
+    <div class="card-header">
+      <a href="#" class="h2"><b>Account Login</b></a>
+    </div>
     <div class="card-body login-card-body">
+
+    <p style="font-size: 12px;">Masuk menggunakan email dan password dibawah ini.</p>
     @if($errors->any())
       <div class="alert alert-danger">
       {{$errors->first()}}
@@ -31,7 +37,7 @@
       <form method="POST" action="{{ route('login') }}">
        {{ csrf_field() }}
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
+          <input name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -48,8 +54,9 @@
         </div>
         <div class="row">
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="col-12" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary btn-block" style="background-color: #3BB873;border:none">Login</button>
+            <p style="font-size: 12px;margin-top: 10px;">Tidak memiliki akun ? <a href="#">Request akun</a></p>
           </div>
           <!-- /.col -->
         </div>

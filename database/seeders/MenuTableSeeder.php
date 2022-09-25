@@ -14,42 +14,28 @@ class MenuTableSeeder extends Seeder
     {
         $data = array(
             array(
+                'menu_name' => 'Dashboard',
+                'menu_url' => 'dashboard'
+               ),
+            array(
                 'menu_name' => 'Manage Users',
                 'menu_url' => 'user'
                ),
             array(
-                'menu_name' => 'Expense Categories',
-                'menu_url' => 'expance-category'
+                'menu_name' => 'Daily Planning',
+                'menu_url' => 'planning-daily'
                 ),
             array(
-                'menu_name' => 'Expense Subcategories',
-                'menu_url' => 'expance-subcategory'
+                'menu_name' => 'Monthly Planning',
+                'menu_url' => 'planning-monthly'
                 ),
             array(
-                'menu_name' => 'Income Categories',
-                'menu_url' => 'income-category'
+                'menu_name' => 'Production Result',
+                'menu_url' => 'production-result'
                 ),
             array(
-                'menu_name' => 'Income Subcategories',
-                'menu_url' => 'income-subcategory'
-                )
-                ,
-            array(
-                'menu_name' => 'Income',
-                'menu_url' => 'income'
-                ),
-            array(
-                'menu_name' => 'Expenses',
-                'menu_url' => 'expance'
-                ),
-            array(
-                'menu_name' => 'Income Report',
-                'menu_url' => 'income-report'
-                )
-                ,
-            array(
-                'menu_name' => 'Expences Report',
-                'menu_url' => 'expance-report'
+                'menu_name' => 'Maintenance',
+                'menu_url' => 'maitenance'
                 )
             );
         \App\Models\Admin\MenuModel::insert($data);

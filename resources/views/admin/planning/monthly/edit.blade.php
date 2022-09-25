@@ -32,22 +32,12 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <!-- form start -->
-              <form role="form" method="post" action="{{ url('admin/income-subcategory/create') }}">
+              <form role="form" method="post" action="{{ url('admin/expance-category/update/'.$data['id']) }}">
                 {{ csrf_field() }}
-                <input type="text" name="type" value="income" style="display:none">
                 <div class="card-body">
-                <div class="form-group">
-                    <label for="exampleInputText">Category</label>
-                    <select class="custom-select" name="category_id" required>
-                      <option value="">== Please Select Category ==</option>
-                      @foreach($category as $key)
-                      <option value="{{$key['id']}}">{{$key['name']}}</option>
-                      @endforeach
-                    </select>
-                  </div>
                   <div class="form-group">
-                    <label for="exampleInputText">Sub Category Name</label>
-                    <input type="text" required name="name"  class="form-control" id="exampleInputText" placeholder="Enter category name ..">
+                    <label for="exampleInputText">Category Name</label>
+                    <input type="text" required name="name"  class="form-control"  value="{{$data['name']}}">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -68,4 +58,3 @@
     <!-- /.content -->
   </div>
 @endsection
-

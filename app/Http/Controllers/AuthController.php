@@ -41,14 +41,14 @@ class AuthController extends Controller
         if (Hash::check($PostRequest['password'], $cek_member->password)) {
             if ($cek_member->status=="active") {
                 Session::put('Users',$cek_member->toArray());
-                return redirect('/admin/profile');
+                return redirect('/admin/dashboard');
             }else{
                 return redirect()->back()->withErrors(['Failed! Member inactive!']);
             }
         }
-        return redirect()->back()->withErrors(['Failed! invalid password!']);  
+        return redirect()->back()->withErrors(['Failed! invalid password!']);
     }
-    
+
     public function logout(){
         Session::flush();
         return redirect('/');

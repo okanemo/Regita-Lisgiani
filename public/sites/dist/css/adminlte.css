@@ -2189,7 +2189,7 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 5px;
 }
 
 .form-text {
@@ -13909,7 +13909,7 @@ body.text-sm .control-sidebar {
   line-height: calc(2.875rem + 2px);
 }
 
-.form-group-lg .form-control + .form-control-feedback.fa, .form-group-lg .form-control + .form-control-feedback.fas, .form-group-lg .form-control + .form-control-feedback.far, .form-group-lg .form-control + .form-control-feedback.fab, .form-group-lg .form-control + .form-control-feedback.glyphicon, .form-group-lg .form-control + .form-control-feedback.ion {
+.form-group-lg .form-control + .form-control-feedback.fa, .DailyController-lg .form-control + .form-control-feedback.fas, .form-group-lg .form-control + .form-control-feedback.far, .form-group-lg .form-control + .form-control-feedback.fab, .form-group-lg .form-control + .form-control-feedback.glyphicon, .form-group-lg .form-control + .form-control-feedback.ion {
   line-height: calc(2.875rem + 2px);
 }
 
